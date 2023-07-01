@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const entityData = require('../iluminacao.json');
+const entityData = require('../../iluminacao.json');
 
 axios.post('http://localhost:1026/v2/entities', entityData)
   .then(response => {
