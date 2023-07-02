@@ -1,5 +1,5 @@
 {
-    "id": "urn:ngsi-ld:StreetLight:001",
+    "id": "00001",
     "type": "StreetLight",
     "location": {
       "type": "geo:json",
@@ -9,7 +9,7 @@
       }
     },
     "status": {
-      "type": "Text",
+      "type": "Boolean",
       "value": "on"
     },
     "intensity": {

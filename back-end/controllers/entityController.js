@@ -1,6 +1,8 @@
 // entityController.js
 const axios = require('axios');
 
+const orionBaseUrl = "http://localhost:1026";
+
 // Função para criar uma entidade
 exports.createEntity = (req, res) => {
   const entity = req.body;
