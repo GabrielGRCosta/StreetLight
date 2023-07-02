@@ -29,6 +29,7 @@ app.post('/inscricao', (req, res) => {
 });
 
 
+
 // Rota para receber as notificações de atualização de entidades
 app.post('/notificacao-atualizacao', async (req, res) => {
   try {

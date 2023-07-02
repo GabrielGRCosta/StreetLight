@@ -3,9 +3,16 @@ const axios = require('axios');
 
 const orionBaseUrl = "http://localhost:1026";
 
+
+let entities = []; // Array para armazenar as entidades
+
 // Função para criar uma entidade
 exports.createEntity = (req, res) => {
   const entity = req.body;
+  const id = String(entities.length);
+  entity.id = id;
+
+  entities.push(entity); // Adicionar a entidade ao array
 
   axios
     .post(`${orionBaseUrl}/v2/entities`, entity)

@@ -1,28 +1,16 @@
 {
-    "id": "00001",
+    "id": "",
     "type": "StreetLight",
     "location": {
       "type": "geo:json",
       "value": {
         "type": "Point",
-        "coordinates": [40.68975378120008, -74.04441456930888]
+        "coordinates": []
       }
     },
     "status": {
       "type": "Boolean",
-      "value": "on"
-    },
-    "intensity": {
-      "type": "Number",
-      "value": 100
-    },
-    "powerConsumption": {
-      "type": "Number",
-      "value": 200
-    },
-    "lastUpdated": {
-      "type": "DateTime",
-      "value": "2023-07-01T12:00:00Z"
+      "value": ""
     }
   }
   
