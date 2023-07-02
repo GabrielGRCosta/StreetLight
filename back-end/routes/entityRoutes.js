@@ -9,6 +9,8 @@ router.post('/', entityController.createEntity);
 // Rota para obter todas as entidades
 router.get('/', entityController.getEntities);
 
+router.get('/:id', entityController.getEntidade);
+
 // Rota para remover uma entidade
 router.delete('/:id', entityController.removeEntity);
 
