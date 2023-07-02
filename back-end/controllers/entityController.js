@@ -32,6 +32,23 @@ exports.getEntities = (req, res) => {
     });
 };
 
+exports.getEntity = (req, res) => {
+  const entityId = req.params.id;
+
+  axios
+    .get(`${orionBaseUrl}/v2/entities/${entityId}`)
+    .then(response => {
+      const entity = response.data;
+      console.log('Entidade encontrada:', entity);
+      res.status(200).json(entity);
+    })
+    .catch(error => {
+      console.error('Erro ao consultar entidade:', error);
+      res.status(500).send('Erro ao consultar entidade');
+    });
+};
+
+
 // Função para remover uma entidade
 exports.removeEntity = (req, res) => {
   const entityId = req.params.id;
