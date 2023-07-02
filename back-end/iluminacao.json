@@ -1,5 +1,5 @@
 {
-    "id": "00001",
+    "id": 1,
     "type": "StreetLight",
     "location": {
       "type": "geo:json",
@@ -11,18 +11,6 @@
     "status": {
       "type": "Boolean",
       "value": "on"
-    },
-    "intensity": {
-      "type": "Number",
-      "value": 100
-    },
-    "powerConsumption": {
-      "type": "Number",
-      "value": 200
-    },
-    "lastUpdated": {
-      "type": "DateTime",
-      "value": "2023-07-01T12:00:00Z"
     }
   }
   

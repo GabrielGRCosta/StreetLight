@@ -2,12 +2,12 @@ const express = require('express');
 var cors = require('cors')
 const app = express();
 const WebSocket = require('ws');
-const port = 3000;
+const port = 8080;
 const entityController = require('./controllers/entityController');
 const entityRoutes = require('./routes/entityRoutes');
 
 // Configurar o servidor WebSocket
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 8081 });
 
 // Configurar o servidor Express
 app.use(express.json());
