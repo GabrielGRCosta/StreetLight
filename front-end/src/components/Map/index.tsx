@@ -1,6 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents, CircleMarker, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import icon from "../../assets/img/poste_bk.png"
+import iconLight from "../../assets/img/poste_light.png"
+import iconOff from "../../assets/img/poste_off.png"
 import L from 'leaflet';
 import "./style.css";
 import { useEffect, useState } from "react";
@@ -21,14 +22,23 @@ export default function Map({selectionMode, setCoordinates}: MapProps) {
     
     const [lightPoles, setLightPoles] = useState<Array<LightPole>>([]);
 
-    const customIcon = new L.Icon({
-        iconUrl: icon,
-        iconSize: [25, 35],
-        iconAnchor: [5, 30]
+    const customIconLight = new L.Icon({
+        iconUrl: iconLight,
+        iconSize: [40, 40],
+        iconAnchor: [5, 30],
+        className: 'icon-marker',
     });
+
+    const customIconOff = new L.Icon({
+        iconUrl: iconOff,
+        iconSize: [40,40],
+        iconAnchor: [5, 30],
+    })
 
     useEffect(() => {
         loadLightPole();
+        const idInterval = setInterval(() => loadLightPole(), 15000)
+        return () => clearInterval(idInterval);
     }, [])
 
     function MapView() {
@@ -77,13 +87,15 @@ export default function Map({selectionMode, setCoordinates}: MapProps) {
                 const {latitude, longitude} = lP.location.value.coordinates
                 return (
                     <Marker 
+                        
                         key={index} 
-                        icon={customIcon} 
+                        icon={lP.status.value == 'on' ? customIconLight : customIconOff} 
                         position={[latitude, longitude]}
                         eventHandlers={{
                             click: (e) => {
                                 if (selectionMode) setCoordinates({
                                     id: lP.id,
+                                    status: lP.status.value,
                                     latitude: e.latlng.lat,
                                     longitude: e.latlng.lng,
                                 })

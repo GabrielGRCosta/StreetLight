@@ -33,6 +33,9 @@ const useSendRequisition = () => {
                 case "PUT":
                     response = await api.put(endpoint, data, config);
                     break;
+                case "PATCH":
+                    response = await api.patch(endpoint, data, config);
+                    break;
                 case "DELETE":
                     response = await api.delete(endpoint, data);
                     break;

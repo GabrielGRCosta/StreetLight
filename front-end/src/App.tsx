@@ -9,12 +9,13 @@ import { Coordinates } from './@types/entities';
 type Action = "NEW" | "DELETE" | "TOGGLE"
 
 interface CoordinatesAndId extends Coordinates {
-  id?: string
+  id?: string,
+  status?: string,
 }
 
 function App() {
 
-  const { createLightPole, removeLightPole } = useRequisitions();
+  const { createLightPole, removeLightPole, powerOffLightPole, powerOnLightPole } = useRequisitions();
 
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [animationBtDrawer, setAnimationBtDrawer] = useState<number>(0);
@@ -49,12 +50,13 @@ function App() {
         break;
         case 'DELETE':
           if (!(coordinates.id)) throw "Null id";
-
-          removeLightPole(coordinates.id)
+            removeLightPole(coordinates.id)
         break;
         case 'TOGGLE':
-          if (!(coordinates.id)) throw "Null id";
-          
+          console.log(coordinates);
+          if (!(coordinates.id) || !(coordinates.status)) throw "Null id or Null status";
+            if (coordinates.status == 'off') powerOnLightPole(coordinates.id);
+            else if (coordinates.status == 'on') powerOffLightPole(coordinates.id);
         break;
       }
     setAction(null);

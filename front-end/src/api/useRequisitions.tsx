@@ -40,11 +40,16 @@ const useRequisitions = () => {
         return response;
     }
 
-    async function powerOffLightPole(): Promise<AxiosResponse> {
+    async function powerOffLightPole(id: string): Promise<AxiosResponse> {
         const response = await sendRequisition({
-            method: 'POST',
-            endpoint: "",
-            
+            method: 'PATCH',
+            endpoint: id,
+            data: {
+                "status": {
+                    "type": "Boolean",
+                    "value": "off"
+                }  
+            }
         })
 
         if (!response) throw "Null response";
@@ -52,11 +57,16 @@ const useRequisitions = () => {
         return response;
     }
 
-    async function powerOnLightPole(): Promise<AxiosResponse> {
+    async function powerOnLightPole(id: string): Promise<AxiosResponse> {
         const response = await sendRequisition({
-            method: 'POST',
-            endpoint: "",
-            
+            method: 'PATCH',
+            endpoint: id,
+            data: {
+                "status": {
+                    "type": "Boolean",
+                    "value": "on"
+                }
+            }
         })
 
         if (!response) throw "Null response";
