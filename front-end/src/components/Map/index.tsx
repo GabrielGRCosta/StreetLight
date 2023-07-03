@@ -4,9 +4,10 @@ import iconLight from "../../assets/img/poste_light.png"
 import iconOff from "../../assets/img/poste_off.png"
 import L from 'leaflet';
 import "./style.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import useRequisitions from '../../api/useRequisitions'
 import { LightPole } from "../../@types/entities";
+import { MainContext } from "../../stores/mainContext";
 
 interface MapProps {
     selectionMode: boolean,
@@ -20,19 +21,19 @@ export default function Map({selectionMode, setCoordinates}: MapProps) {
 
     const { getAllLightPole } = useRequisitions();
     
-    const [lightPoles, setLightPoles] = useState<Array<LightPole>>([]);
+    const { lightPoles, setLightPoles } = useContext(MainContext);
 
     const customIconLight = new L.Icon({
         iconUrl: iconLight,
         iconSize: [40, 40],
-        iconAnchor: [5, 30],
+        iconAnchor: [20, 20],
         className: 'icon-marker',
     });
 
     const customIconOff = new L.Icon({
         iconUrl: iconOff,
         iconSize: [40,40],
-        iconAnchor: [5, 30],
+        iconAnchor: [20, 20],
     })
 
     useEffect(() => {
