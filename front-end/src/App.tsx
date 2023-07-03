@@ -8,13 +8,17 @@ import { Coordinates } from './@types/entities';
 
 type Action = "NEW" | "DELETE" | "TOGGLE"
 
+interface CoordinatesAndId extends Coordinates {
+  id?: string
+}
+
 function App() {
 
-  const { createLightPole } = useRequisitions();
+  const { createLightPole, removeLightPole } = useRequisitions();
 
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const [animationBtDrawer, setAnimationBtDrawer] = useState<number>(0);
-  const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const [coordinates, setCoordinates] = useState<CoordinatesAndId | null>(null);
   const [action, setAction] = useState<Action | null>(null);
 
   // useEffect(() => {
@@ -43,7 +47,15 @@ function App() {
             }
           })
         break;
-        
+        case 'DELETE':
+          if (!(coordinates.id)) throw "Null id";
+
+          removeLightPole(coordinates.id)
+        break;
+        case 'TOGGLE':
+          if (!(coordinates.id)) throw "Null id";
+          
+        break;
       }
     setAction(null);
   }, [coordinates])

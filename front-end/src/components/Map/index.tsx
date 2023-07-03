@@ -79,7 +79,16 @@ export default function Map({selectionMode, setCoordinates}: MapProps) {
                     <Marker 
                         key={index} 
                         icon={customIcon} 
-                        position={[latitude, longitude]}>
+                        position={[latitude, longitude]}
+                        eventHandlers={{
+                            click: (e) => {
+                                if (selectionMode) setCoordinates({
+                                    id: lP.id,
+                                    latitude: e.latlng.lat,
+                                    longitude: e.latlng.lng,
+                                })
+                            }
+                        }}>
                     </Marker>
                 )
             })}

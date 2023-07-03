@@ -29,11 +29,10 @@ const useRequisitions = () => {
         return response;
     }
 
-    async function removeLightPole(): Promise<AxiosResponse> {
+    async function removeLightPole(id: string): Promise<AxiosResponse> {
         const response = await sendRequisition({
-            method: 'POST',
-            endpoint: "",
-            
+            method: 'DELETE',
+            endpoint: id,
         })
 
         if (!response) throw "Null response";
